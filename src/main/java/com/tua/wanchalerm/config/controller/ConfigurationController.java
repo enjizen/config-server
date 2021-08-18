@@ -23,8 +23,8 @@ public class ConfigurationController {
 
     private final ConfigurationService configurationService;
 
-    @GetMapping("/{application}/{profile}")
-    public ResponseEntity getConfiguration(@PathVariable("application") String application, @PathVariable("profile") String profile) {
+    @GetMapping("/ssw/{application}/{profile}")
+    public ResponseEntity<Object> getConfiguration(@PathVariable("application") String application, @PathVariable("profile") String profile) {
         log.info("======== Start get configuration ===========");
         Map<String ,String> configurationMap = new HashMap<>();
         List<PropertySourceResponse> propertySourceResponseList = new ArrayList<>();
@@ -39,6 +39,4 @@ public class ConfigurationController {
         log.info("=============== End get configuration  ==============================");
         return ResponseEntity.ok(getConfigurationResponse);
     }
-
-
 }
